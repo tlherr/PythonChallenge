@@ -1,4 +1,5 @@
 import re
+import url
 
 # Question 4
 
@@ -1255,8 +1256,11 @@ KfErkDaWMFZZeuqDmXKJEGHyToPUhPphfVhgUZgbIuRAtWnroImpJKqqmEZqeNQCKzhjIkKQHURWLXFw
 PBuijeoTSpsVLaOGuLVjMZXkBvVXwUuHfBihziiavGSYofPNeKsTXruMUumRRPQJzvSzJkKbtSipiqBd
 """
 
-findupperlittle = re.search('/([A-Z]{3})([a-z])([A-Z]{3})/g', q4txt)
+
+findupperlittle = re.findall(r"[^A-Z]+[A-Z]{3}([a-z])[A-Z]{3}[^A-Z]+", q4txt)
 if findupperlittle:
-   print(findupperlittle.group())
+   print(findupperlittle)
+   print(url.format(''.join(findupperlittle)))
+
 else:
    print("No match!!")
